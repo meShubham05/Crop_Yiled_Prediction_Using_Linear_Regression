@@ -85,4 +85,37 @@ public class CropRepositoryImpl  extends DBState implements CropRepository {
 		return false;
 	}
 
+
+	public List<CropModel> allCropList() {
+
+		try
+		{
+			stmt = conn.prepareStatement("select * from crop");
+			rs= stmt.executeQuery();
+			
+			while(rs.next())
+			{
+				int cropId = rs.getInt("cropid");
+				String cropName = rs.getString("cropname");
+				String fertilizer = rs.getString("fertilizer");
+				float temp = rs.getFloat("temp");
+				float pH = rs.getFloat("pH");
+				int rainfall = rs.getInt("rainfall");
+				int stateId = rs.getInt("stateId");
+				int distId = rs.getInt("distId");
+				int cityId = rs.getInt("cityId");
+				int Area = rs.getInt("Area");
+				
+				System.out.println("Crop Id :"+ cropId +" Crop Name : "+cropName+ " Crop Fertilizer : "+fertilizer+ " Region Temperature :"+temp+" Soil pH :"
+						+pH+ "  Rainfall :  "+rainfall + " State ID :"+stateId+" DistName :"+distId+" CityId :"+cityId+"Area : "+Area);
+				
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

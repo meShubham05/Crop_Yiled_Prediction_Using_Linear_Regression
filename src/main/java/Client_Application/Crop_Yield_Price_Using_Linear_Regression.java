@@ -52,7 +52,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 			System.out.println("6 : View All Cities :");
 			System.out.println("7 : Add Crop Data of Farmer :");
 			System.out.println("8 : View All Crops :");
-			System.out.println("7 : To Add Old Data Set ");
+			System.out.println("9 : To Add Old Data Set ");
 			
 			System.out.println("Enter your choice :");
 			choice = sc.nextInt();
@@ -134,7 +134,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					
 				case 8:
 					
-					
+					cropservice.allCropList();
 					
 					break;
 					
