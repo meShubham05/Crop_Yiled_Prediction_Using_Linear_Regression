@@ -1,17 +1,15 @@
 package repository;
 
 import java.sql.*;
-public class DBState extends DBConfig
+public class DBState
 {
 
 		DBConfig config = DBConfig.getDBconfig();
-		Connection conn= config.getConnection();
-		PreparedStatement stmt = config.getStatement();
-		ResultSet rs = config.getResultSet();
+		protected Connection conn= config.getConnection();
+		protected PreparedStatement stmt = config.getStatement();
+		protected ResultSet rs = config.getResultSet();
 		
-		public DBState()
-		{
-			
-		}
+		
+		
 		
 }

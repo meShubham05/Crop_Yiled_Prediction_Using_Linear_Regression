@@ -6,7 +6,7 @@ import java.io.*;
 
 public class DBConfig {
 
-    protected static DBConfig config;
+    protected static DBConfig config=null;
     public static Connection conn;
     public static PreparedStatement stmt;
     public static ResultSet rs;
@@ -26,40 +26,40 @@ public class DBConfig {
             String password = p.getProperty("password");
             String url = p.getProperty("url");
 
-        
-            System.out.println("The Driver Name is :" + driver);
-            System.out.println("The username is : " + username);
-            System.out.println("The Password is :" + password);
+//        
+//            System.out.println("The Driver Name is :" + driver);
+//            System.out.println("The username is : " + username);
+//            System.out.println("The Password is :" + password);
 
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-      
-            try {
-				conn = DriverManager.getConnection(url, username, password);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            conn = DriverManager.getConnection(url, username, password);
+			
 
             if (conn != null) {
                 System.out.println("The connection is Successful");
             } else {
                 System.out.println("Connection failed !!");
             }
-
-            if (config == null) {
-                config = new DBConfig();
-            }
-    	}catch(Exception e)
+    	}
+            
+    	catch(Exception e)
     	{
     			e.printStackTrace();
     	}
     	        
     }
 
-    public static DBConfig getDBconfig() {
-        return config;
+    public static DBConfig getDBconfig()
+    {
+    	
+    	if(config ==null)
+    	{
+    		config = new DBConfig();
+    				
+    	}
+    	
+    	return config;
     }
 
     public static Connection getConnection() {
@@ -74,7 +74,5 @@ public class DBConfig {
         return rs;
     }
 
-    public static void main(String[] args) {
-        
-    }
+   
 }

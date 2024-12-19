@@ -1,11 +1,13 @@
 package services;
 
+import java.util.List;
+
 import model.StateModel;
 
 
 public interface StateService {
 	
-	Boolean isAddedNewState(StateModel statemodel);
-	
+		public abstract  boolean isAddedNewState(StateModel statemodel);
+		public List<StateModel> allState();
 
 }

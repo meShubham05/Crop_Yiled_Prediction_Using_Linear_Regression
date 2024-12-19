@@ -14,24 +14,26 @@ public class StateModel {
 	{
 		this.stateid=stateid;
 		this.statename = statename;
-		
 	}
 
-	public int getStateid() {
+	public int getStateid() 
+	{
 		return stateid;
 	}
 
-	public void setStateid(int stateid) {
+	public void setStateid(int stateid) 
+	{
 		this.stateid = stateid;
 	}
 
-	public String getStatename() {
+	public String getStatename() 
+	{
 		return statename;
 	}
 
-	public void setStatename(String statename) {
+	public void setStatename(String statename) 
+	{
 		this.statename = statename;
 	}
-	
 	
 }
