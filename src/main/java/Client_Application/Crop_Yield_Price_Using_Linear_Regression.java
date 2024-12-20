@@ -2,7 +2,6 @@ package Client_Application;
 
 import model.*;
 
-import model.*;
 import services.*;
 import java.util.*;
 
@@ -29,14 +28,15 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		CityService cityService = new CityServiceImpl();
 		OldDataSetService olddataService = new OldDataSetServiceImpl();
 		CropService cropservice = new CropServiceImpl();
-		
-		
+		AdminCredentialService adminservice = new AdminCredentialServiceImpl();
+		CustomerLoginService customerService = new CustomerLoginServiceImpl();
 		
 		StateModel statemodel = new StateModel();
 		DistrictModel distmodel = new DistrictModel();
 		CityModel citymodel = new CityModel();
 		OldDataSetModel olddataModel  = new OldDataSetModel();
 		CropModel cropModel = new CropModel();
+		AdminMaster adminmaster = new AdminMaster();
 		int choice;
 		
 		Scanner sc = new Scanner(System.in);	
@@ -44,6 +44,63 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		do
 		{
 			System.out.println("Welcome to the Crop Yield Prediction App ");
+			
+			System.out.println(" Login for 1 : Admin : ");
+			System.out.println(" Login for 2 : Customer :");
+			System.out.println(" 3 : System Exit ");
+			
+			System.out.println("Enter Your Choice :");
+			int login = sc.nextInt();
+			sc.nextLine();
+			
+			switch(login)
+			{
+					case 1:
+						
+						System.out.println("Enter username :");
+						String username =sc.nextLine();
+						
+						System.out.println("Enter password :");
+						String password =sc.nextLine();
+						
+						if(adminservice.isAdminMatch(username, password))
+						{
+							log.info("Admin Verification Successful :");
+						}
+						else
+						{
+							log.info("Admin Not Found !!! Thank You ");
+						}
+						
+						
+						break;
+						
+					case  2 :
+						
+						System.out.println("Enter username :");
+						 username =sc.nextLine();
+						
+						System.out.println("Enter password :");
+						 password =sc.nextLine();
+						
+						if(customerService.isCustomerMatch(username, password))
+						{
+							System.out.println("Customer Verification Successful ");
+							
+						}
+						else
+						{
+							System.out.println("Opps !!! Customer Not Found : ");
+						}
+						
+						break;
+					case 3 :
+						
+						break;
+						
+						
+			}
+			
 			System.out.println("1 : Add State");
 			System.out.println("2 : View all State :");
 			System.out.println("3 : Add District :");
@@ -53,6 +110,10 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 			System.out.println("7 : Add Crop Data of Farmer :");
 			System.out.println("8 : View All Crops :");
 			System.out.println("9 : To Add Old Data Set ");
+			System.out.println("10 : Display all Old Data  of Three Years :");
+			
+			
+			
 			
 			System.out.println("Enter your choice :");
 			choice = sc.nextInt();
@@ -68,7 +129,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					}
 					else
 					{
-						log.info("Statte is not Added :");
+						log.info("State is not Added :");
 					}
 						
 					break;
@@ -131,7 +192,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					
 					break;
 					
-					
+				
 				case 8:
 					
 					cropservice.allCropList();
@@ -153,6 +214,12 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 						log.info("Opps !!! Some problem is Occured While entering the data in OLD DATA SET table :");
 					}
 					
+					break;
+					
+				case 10:
+					
+					olddataService.olddataset();					
+					break;					
 			}
 		
 		}while(choice!=0);

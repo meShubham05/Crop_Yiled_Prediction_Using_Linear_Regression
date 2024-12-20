@@ -18,6 +18,10 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			
 			
 			System.out.println("Enter the 3 Year Old DataSet :");
+			
+			for(int i=0;i<3;i++)
+			{
+				
 			System.out.println("Enter the Crop Details :");
 			
 			System.err.println("Enter the DataSet Id :");
@@ -64,6 +68,7 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			 
 			 int stateId =sc.nextInt();			 
 			 
+			
 			 /*
 		// datasetid  | int                          | NO   | PRI | NULL    | auto_increment |
 			 | cropid     | int                          | YES  | MUL | NULL    |                |
@@ -104,15 +109,53 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			else
 			{
 				return false;
-			}	
+			}
 			
+			}
 		}
+			
+		
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 
 		return false;
+			
+	}
+
+
+	public List<OldDataSetModel> olddataset() {
+		
+		try
+		{
+			stmt = conn.prepareStatement("select * from olddataset ");
+			rs= stmt.executeQuery();
+			//	 datasetid | cropid | fertilizer | ph   | temp  | rainfall | yield | year | season | cityid | districtId | stateId
+			
+			while(rs.next())
+			{	
+			int datasetid = rs.getInt("datasetid");
+			int cropId = rs.getInt("cropid");
+			String fertilizer = rs.getString("fertilizer");
+			float pH = rs.getFloat("pH");
+			float temp = rs.getFloat("temp");
+			int rainfall = rs.getInt("rainfall");
+			int yield = rs.getInt("yield");
+			int  year = rs.getInt("year");
+			String season = rs.getString("season");
+			int cityId = rs.getInt("cityid");
+			int districtId = rs.getInt("districtId");
+			int stateId = rs.getInt("stateId");
+			
+			System.out.println(" Old_Data_Set_Id : "+datasetid+" cropId : "+cropId+ "Fertilizer :"+fertilizer+"  pH :"+pH+" Temperature :"+temp+" Rainfall :"+rainfall+"  Yield :"+yield+" Season :"+season+" CityId :"+cityId+" District :"+districtId+" StateId :"+stateId);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
