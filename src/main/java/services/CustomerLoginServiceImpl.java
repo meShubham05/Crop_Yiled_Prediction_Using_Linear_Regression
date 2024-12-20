@@ -25,4 +25,11 @@ public class CustomerLoginServiceImpl implements CustomerLoginService{
 		return custologinRepo.allLoginCustomer(email);
 	}
 
+
+	@Override
+	public boolean isAddedCustomerLogin() {
+		// TODO Auto-generated method stub
+		return custologinRepo.isAddedCustomerLogin();
+	}
+
 }

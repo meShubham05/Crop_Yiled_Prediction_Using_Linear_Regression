@@ -147,8 +147,9 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			int cityId = rs.getInt("cityid");
 			int districtId = rs.getInt("districtId");
 			int stateId = rs.getInt("stateId");
-			
+			System.out.println("\n====================================================\n");
 			System.out.println(" Old_Data_Set_Id : "+datasetid+" cropId : "+cropId+ "Fertilizer :"+fertilizer+"  pH :"+pH+" Temperature :"+temp+" Rainfall :"+rainfall+"  Yield :"+yield+" Season :"+season+" CityId :"+cityId+" District :"+districtId+" StateId :"+stateId);
+			System.out.println("\n====================================================\n");
 			}
 		}
 		catch(Exception e)

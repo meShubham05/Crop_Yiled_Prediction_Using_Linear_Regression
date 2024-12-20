@@ -48,8 +48,10 @@ public class CityRepositoryImp extends DBState implements CityRepository {
 			while(rs.next())
 			{
 				int id = rs.getInt("cityId");
-				String cityName = rs.getString("cityName");				
+				String cityName = rs.getString("cityName");
+				System.out.println("\n==========================================================\n");
 				System.out.println("City ID : "+id +" City Name : "+cityName); 
+				System.out.println("\n====================================================\n");
 			}
 		}
 		catch(Exception e)
