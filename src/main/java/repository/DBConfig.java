@@ -37,7 +37,7 @@ public class DBConfig {
 			
 
             if (conn != null) {
-                System.out.println("The connection is Successful");
+               // System.out.println("The connection is Successful");
             } else {
                 System.out.println("Connection failed !!");
             }

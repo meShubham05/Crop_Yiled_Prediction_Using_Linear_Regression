@@ -10,4 +10,7 @@ public interface CityRepository {
 	public List<CityModel> cityList();
 	
 	
+	
+	
+	
 }
