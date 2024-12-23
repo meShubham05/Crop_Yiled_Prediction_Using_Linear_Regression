@@ -5,9 +5,12 @@ import java.util.*;
 
 public interface DistrictRepository {
 
-	public abstract boolean isDistrictAdd(DistrictModel distmodel);
+	public  boolean isDistrictAdd(DistrictModel distmodel);
 	
-	public abstract List<DistrictModel>  districtList ();
+	public  List<DistrictModel>  districtList ();
+	
+	public boolean isCityAddedUnderDistrict(String distName, String cityName);
+	
 	
 	
 }

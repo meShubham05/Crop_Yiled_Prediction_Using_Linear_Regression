@@ -63,5 +63,32 @@ public class DistrictRepositoryImp extends DBState implements DistrictRepository
 		return null;
 	}
 
+	@Override
+	public boolean isCityAddedUnderDistrict(String distName, String cityName) {
+		
+		try
+		{
+			
+			callstmt=conn.prepareCall("{ call addCity(?,?)}");
+			callstmt.setString(1, distName);
+			callstmt.setString(2,cityName);
+			boolean result = callstmt.execute();
+			if(!result)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	
 }

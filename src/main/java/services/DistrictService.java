@@ -8,4 +8,5 @@ public interface DistrictService {
 
 	public boolean isDistrictAdd(DistrictModel distmodel);
 	public List<DistrictModel> districtList();
+	public boolean isCityAddedUnderDistrict(String distName, String cityName);
 }

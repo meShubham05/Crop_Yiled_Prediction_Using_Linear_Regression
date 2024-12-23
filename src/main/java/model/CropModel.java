@@ -32,6 +32,29 @@ public class CropModel {
 	public int getCropid() {
 		return cropid;
 	}
+	
+	public CropModel()
+	{
+		
+	}
+	
+	
+	public CropModel(int cropid, String cropname, String fertilizer, float temp, float pH, float rainfall, int stateId,
+			int distId, int cityId, float area) {
+		
+		this.cropid = cropid;
+		this.cropname = cropname;
+		this.fertilizer = fertilizer;
+		this.temp = temp;
+		this.pH = pH;
+		this.rainfall = rainfall;
+		this.stateId = stateId;
+		this.distId = distId;
+		this.cityId = cityId;
+		Area = area;
+	}
+
+
 	public void setCropid(int cropid) {
 		this.cropid = cropid;
 	}

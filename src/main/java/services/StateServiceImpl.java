@@ -21,6 +21,12 @@ public class StateServiceImpl implements StateService
 	{
 		return staterepo.allState();
 	}
+	
+	public boolean isDistrictUnderState(String stateName, String distName)
+	{
+		return staterepo.isDistrictUnderState(stateName, distName);
+	}
+	
 
 }
   

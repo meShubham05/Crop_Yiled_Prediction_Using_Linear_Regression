@@ -85,4 +85,32 @@ public class StateRepositoryImp  extends DBState implements StateRepository{
 		return allState;
 	}
 
+
+
+	@Override
+	public boolean isDistrictUnderState(String stateName, String distName) {
+
+		try
+		{
+			callstmt=conn.prepareCall("{call saveDistrict(?,?)}");
+			callstmt.setString(1, stateName);
+			callstmt.setString(2, distName);
+			boolean result =callstmt.execute();  // remember callable statement always return false if the query is successfully executed 
+			if(!result)
+			{
+				return true;
+			}
+			else
+			{
+				return false; 
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
 }

@@ -79,13 +79,8 @@ public class CustomerLoginRepoImpl  extends DBState implements CustomerLoginRepo
 		        
 		        System.out.print("Enter Date of Birth (YYYY-MM-DD): ");
 		        String dateOfBirth = sc.nextLine();
-		        
-		        System.out.print("Enter Registration Date (YYYY-MM-DD): ");
-		        String registrationDate = sc.nextLine();
-
-		       
-	
-		        stmt = conn.prepareStatement( "INSERT INTO customerlogin (firstName, lastName, customerEmail, password, customerPhoneNumber, customerAddress, dateOfBirth, registrationDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		      	
+		        stmt = conn.prepareStatement( "INSERT INTO customerlogin (firstName, lastName, customerEmail, password, customerPhoneNumber, customerAddress, dateOfBirth) VALUES (?, ?, ?, ?, ?, ?, ?)");
 		        
 		  
 		        stmt.setString(1, firstName);
@@ -95,7 +90,7 @@ public class CustomerLoginRepoImpl  extends DBState implements CustomerLoginRepo
 		        stmt.setString(5, phoneNumber);
 		        stmt.setString(6, address);
 		        stmt.setString(7, dateOfBirth);
-		        stmt.setString(8, registrationDate);
+		       
 
 		        // Execute the update
 		        int rowsInserted = stmt.executeUpdate();

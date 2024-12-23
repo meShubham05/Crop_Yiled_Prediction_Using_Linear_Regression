@@ -1,7 +1,20 @@
 package repository;
 
 import model.CropModel;
+
+import java.io.FileReader;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.FileInputStream;
+
+// For .xlsx files
+
+
+import java.io.*;
 public class CropRepositoryImpl  extends DBState implements CropRepository {
 
 	@Override
@@ -118,4 +131,71 @@ public class CropRepositoryImpl  extends DBState implements CropRepository {
 		return null;
 	}
 
-}
+
+	public boolean isAddedBulkCropDataSet(String filePath) {
+
+	        FileInputStream fileInputStream = null;
+	        Workbook workbook = null;
+	         stmt = null;
+
+	        try {
+	            // Open the Excel file
+	            fileInputStream = new FileInputStream(filePath);
+	            workbook = WorkbookFactory.create(fileInputStream);
+
+	            // Get the first sheet
+	            Sheet sheet = workbook.getSheetAt(0);
+
+	            // SQL query for inserting data
+	            String insertQuery = "INSERT INTO crop(cropname, fertilizer, temp, pH, rainfall, stateId, distId, cityId, Area) " +
+	                                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	            stmt = conn.prepareStatement(insertQuery);
+
+	            // Iterate through the rows in the sheet
+	            for (Row row : sheet) {
+	                // Skip the header row
+	                if (row.getRowNum() == 0) continue;
+
+	                // Read cell values
+	                String cropname = row.getCell(0).getStringCellValue();
+	                String fertilizer = row.getCell(1).getStringCellValue();
+	                double temp = row.getCell(2).getNumericCellValue();
+	                double pH = row.getCell(3).getNumericCellValue();
+	                double rainfall = row.getCell(4).getNumericCellValue();
+	                int stateId = (int) row.getCell(5).getNumericCellValue();
+	                int distId = (int) row.getCell(6).getNumericCellValue();
+	                int cityId = (int) row.getCell(7).getNumericCellValue();
+	                int area = (int) row.getCell(8).getNumericCellValue();
+
+	                // Set values in the PreparedStatement
+	                stmt.setString(1, cropname);
+	                stmt.setString(2, fertilizer);
+	                stmt.setDouble(3, temp);
+	                stmt.setDouble(4, pH);
+	                stmt.setDouble(5, rainfall);
+	                stmt.setInt(6, stateId);
+	                stmt.setInt(7, distId);
+	                stmt.setInt(8, cityId);
+	                stmt.setInt(9, area);
+
+	                // Add the query to the batch
+	                stmt.addBatch();
+	            }
+
+	            // Execute batch
+	            int[] result = stmt.executeBatch();
+	            System.out.println("Data inserted successfully! Rows affected: " + result.length);
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            // Close resources
+	            try { if (stmt != null) stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+	            try { if (workbook != null) workbook.close(); } catch (Exception e) { e.printStackTrace(); }
+	            try { if (fileInputStream != null) fileInputStream.close(); } catch (Exception e) { e.printStackTrace(); }
+	        }
+			return false;
+	    }
+
+	}
+	

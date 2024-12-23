@@ -6,7 +6,10 @@ public class CityModel {
 	private int cityId;
 	private String cityName;
 	
-	
+	public CityModel()
+	{
+		
+	}
 	
 	public int getCityId() {
 		return cityId;

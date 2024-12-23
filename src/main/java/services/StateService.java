@@ -10,4 +10,5 @@ public interface StateService {
 		public abstract  boolean isAddedNewState(StateModel statemodel);
 		public List<StateModel> allState();
 
+		public boolean isDistrictUnderState(String stateName, String distName);
 }

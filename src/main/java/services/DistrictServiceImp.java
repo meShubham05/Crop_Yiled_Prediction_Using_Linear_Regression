@@ -23,5 +23,10 @@ public class DistrictServiceImp implements DistrictService{
 		return distrepo.districtList();
 	}
 	
+	public boolean isCityAddedUnderDistrict(String distName, String cityName)
+	{
+		return distrepo.isCityAddedUnderDistrict(distName, cityName);
+	}
+	
 
 }

@@ -56,7 +56,9 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			 System.out.println("Enter the Season of the Crop :");
 			 
 			 String season =sc.nextLine();
-			 System.out.println("Enter the City Name :");
+			 System.out.println("Enter the City Id :");
+			 
+//			 stmt=conn.prepareStatement("select ");
 			 int cityid = sc.nextInt();
 			 
 			 sc.nextLine();
@@ -66,7 +68,7 @@ public class OldDataSetRepositoryImpl  extends DBState implements OldDataSetRepo
 			 
 			 System.out.println("Enter the State Name :");
 			 
-			 int stateId =sc.nextInt();			 
+			 int stateId =sc.nextInt();		 
 			 
 			
 			 /*

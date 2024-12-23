@@ -10,6 +10,7 @@ public class DBConfig {
     public static Connection conn;
     public static PreparedStatement stmt;
     public static ResultSet rs;
+    public static CallableStatement callstmt;
 
     private DBConfig() {
 
@@ -73,6 +74,10 @@ public class DBConfig {
     public static ResultSet getResultSet() {
         return rs;
     }
-
+    
+    public static CallableStatement getCallableStatement()
+    {
+    	return callstmt;
+    }
    
 }

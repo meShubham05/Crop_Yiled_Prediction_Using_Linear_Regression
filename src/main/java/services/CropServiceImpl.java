@@ -24,4 +24,14 @@ public class CropServiceImpl implements CropService{
 		return cropRepo.allCropList();
 	}
 
+
+	public boolean isAddedBulkCropDataSet(String filePath) {
+		// TODO Auto-generated method stub
+		return cropRepo.isAddedBulkCropDataSet(filePath);
+	}
+
+
+	
+
+
 }

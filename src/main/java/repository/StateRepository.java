@@ -5,9 +5,14 @@ import java.util.*;
 
 public  interface StateRepository {
 	
-	public abstract boolean isAddedNewState(StateModel statemodel);
+	public  boolean isAddedNewState(StateModel statemodel);
 	
-	public  abstract List<StateModel> allState();
+	public   List<StateModel> allState();
+	
+	public boolean isDistrictUnderState(String stateName, String distName);
+	
+	
+	
 
 //	default void addState()
 //	{

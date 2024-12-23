@@ -8,5 +8,5 @@ public interface CropRepository {
 	public boolean isCropAdded(CropModel cropmodel);
 	public List<CropModel> allCropList();
 	
-	
+	public boolean isAddedBulkCropDataSet(String filePath);
 }
