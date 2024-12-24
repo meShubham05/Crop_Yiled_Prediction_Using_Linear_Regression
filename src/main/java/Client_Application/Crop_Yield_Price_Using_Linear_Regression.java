@@ -139,13 +139,9 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					case 4:
 
 						distService.districtList();
-
-						break;  
-						
-						
+						break;					
 
 					case 5:
-
 						boolean isCityAdded = cityService.isCityAdded(citymodel);
 						if (isCityAdded) {
 							System.out.println("\n====================================================\n");
@@ -261,8 +257,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					case 13:
 
 						olddataService.olddataset();
-						break;
-						
+						break;					
 						
 					case 14 :
 						
