@@ -1,7 +1,6 @@
 package Client_Application;
 
 import model.*;
-
 import services.*;
 import java.util.*;
 
@@ -10,8 +9,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
-public class Crop_Yield_Price_Using_Linear_Regression 
-{
+public class Crop_Yield_Price_Using_Linear_Regression {
 	public static void main(String[] args) 
 	{
 		
