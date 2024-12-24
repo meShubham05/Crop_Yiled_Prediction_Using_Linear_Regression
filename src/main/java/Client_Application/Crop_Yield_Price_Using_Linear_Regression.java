@@ -92,10 +92,8 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					System.out.println("12 : To Add Bulk OldData Set ");
 					System.out.println("13 : Display all Old Data  of Three Years :");
 					System.out.println("14 : Get MIN(Temp) using crop Name");
-					System.out.println("15 : Filter data ");
+					System.out.println("15 : Filter data ");					
 					
-					
-					System.out.println(" 15 :");
 					
 						// shubhamgborkar99@gmail.com
 					
