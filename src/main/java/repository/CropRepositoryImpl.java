@@ -147,8 +147,8 @@ public class CropRepositoryImpl  extends DBState implements CropRepository {
 	            Sheet sheet = workbook.getSheetAt(0);
 
 	            // SQL query for inserting data
-	            String insertQuery = "INSERT INTO crop(cropname, fertilizer, temp, pH, rainfall, stateId, distId, cityId, Area) " +
-	                                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	            String insertQuery = "INSERT INTO crop(cropname, fertilizer, temp, pH, rainfall, stateId, distId, cityId, Area, season, year) " +
+	                                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 	            stmt = conn.prepareStatement(insertQuery);
 
 	            // Iterate through the rows in the sheet
@@ -166,7 +166,8 @@ public class CropRepositoryImpl  extends DBState implements CropRepository {
 	                int distId = (int) row.getCell(6).getNumericCellValue();
 	                int cityId = (int) row.getCell(7).getNumericCellValue();
 	                int area = (int) row.getCell(8).getNumericCellValue();
-
+	                String season = row.getCell(9).getStringCellValue();
+	                int year = (int)row.getCell(10).getNumericCellValue();
 	                // Set values in the PreparedStatement
 	                stmt.setString(1, cropname);
 	                stmt.setString(2, fertilizer);
@@ -177,7 +178,8 @@ public class CropRepositoryImpl  extends DBState implements CropRepository {
 	                stmt.setInt(7, distId);
 	                stmt.setInt(8, cityId);
 	                stmt.setInt(9, area);
-
+	                stmt.setString(10, season);
+	                stmt.setInt(11, year);
 	                // Add the query to the batch
 	                stmt.addBatch();
 	            }

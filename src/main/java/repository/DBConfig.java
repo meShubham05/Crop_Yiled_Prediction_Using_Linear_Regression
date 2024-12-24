@@ -12,9 +12,11 @@ public class DBConfig {
     public static ResultSet rs;
     public static CallableStatement callstmt;
 
-    private DBConfig() {
+    private DBConfig() 
+    {
 
-    	try {
+    	try 
+    	{
             File file = new File(".");
             String path = file.getAbsolutePath();
             FileInputStream inputstream = new FileInputStream(path + "\\src\\main\\resources\\application.properties");
@@ -37,9 +39,12 @@ public class DBConfig {
             conn = DriverManager.getConnection(url, username, password);
 			
 
-            if (conn != null) {
+            if (conn != null) 
+            {
                // System.out.println("The connection is Successful");
-            } else {
+            } 
+            else 
+            {
                 System.out.println("Connection failed !!");
             }
     	}
@@ -63,15 +68,18 @@ public class DBConfig {
     	return config;
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection() 
+    {
         return conn;
     }
 
-    public static PreparedStatement getStatement() {
+    public static PreparedStatement getStatement() 
+    {
         return stmt;
     }
 
-    public static ResultSet getResultSet() {
+    public static ResultSet getResultSet() 
+    {
         return rs;
     }
     

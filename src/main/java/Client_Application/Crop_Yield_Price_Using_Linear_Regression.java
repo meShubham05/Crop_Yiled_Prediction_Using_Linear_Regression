@@ -264,10 +264,11 @@ public class Crop_Yield_Price_Using_Linear_Regression
 					case 14:
 						
 						
-						System.out.println("1 : Filter Using CROP Name  : ");
+						System.out.println("1 : Filter Using CROP Name  :");
 						System.out.println("2 : Filter Using Season : ");
 						System.out.println("3 : Filter Using Area : ");
-						System.out.println("4 : Exit :");
+						System.out.println("4 : Filter Crop Using year Wise :");
+						System.out.println("5 : Exit :");
 						System.out.println("Enter Your choice :");
 						int filterChoice= sc.nextInt();
 						sc.nextLine();
@@ -290,6 +291,18 @@ public class Crop_Yield_Price_Using_Linear_Regression
 								
 								break;
 								
+								
+							case 2:
+								
+								System.out.println("Enter the Season Where you want to filter the Crop :");
+								String seasonName = sc.nextLine();
+								
+								List <CropModel> filterCropBySeason = filterService.filterCropBySeason(seasonName);
+								
+								if(filterCropBySeason!=null)
+								{
+									filterCropBySeason.forEach((season)->System.out.println("Crop Id :"+season.getCropid()+"  Crop Name :"+season.getCropname()+"  Crop State "+season.getDistId()  ));
+								}
 							}
 						}while(filterChoice!=0);
 
@@ -367,7 +380,6 @@ public class Crop_Yield_Price_Using_Linear_Regression
 					if (isCustomerLoign) 
 					{
 						System.out.println("\n====================================================\n");
-
 						log.info("Customer Registration is Successful :");
 						System.out.println("\n====================================================\n");
 

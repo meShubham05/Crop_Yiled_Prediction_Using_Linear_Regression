@@ -29,6 +29,8 @@ public class CropModel {
 	private int distId;
 	private int cityId;
 	private float Area;
+	private String season;
+	private int year;
 	public int getCropid() {
 		return cropid;
 	}
@@ -40,7 +42,7 @@ public class CropModel {
 	
 	
 	public CropModel(int cropid, String cropname, String fertilizer, float temp, float pH, float rainfall, int stateId,
-			int distId, int cityId, float area) {
+			int distId, int cityId, float area, String season, int year) {
 		
 		this.cropid = cropid;
 		this.cropname = cropname;
@@ -51,6 +53,8 @@ public class CropModel {
 		this.stateId = stateId;
 		this.distId = distId;
 		this.cityId = cityId;
+		this.season=season;
+		this.year=year;
 		Area = area;
 	}
 
@@ -113,6 +117,24 @@ public class CropModel {
 		Area = area;
 	}
 	
+	public void setSeason(String season)
+	{
+		this.season=season;
+		
+	}
+	
+	public void setYear(int year)
+	{
+		this.year=year;
+	}
+	public String getSeason()
+	{
+		return season;
+	}
+	public int getYear()
+	{
+		return year;
+	}
 	
 	
 	
