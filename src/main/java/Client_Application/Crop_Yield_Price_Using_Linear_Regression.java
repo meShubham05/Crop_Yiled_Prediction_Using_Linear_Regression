@@ -1,6 +1,7 @@
 package Client_Application;
 
 import model.*;
+
 import services.*;
 import java.util.*;
 
@@ -8,6 +9,10 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
+
+import Linear_Regression_Services.GetMinOfXService;
+import Linear_Regression_Services.Get_MinService_Impl;
+
 
 public class Crop_Yield_Price_Using_Linear_Regression {
 	public static void main(String[] args) 
@@ -27,6 +32,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		AdminCredentialService adminservice = new AdminCredentialServiceImpl();
 		CustomerLoginService customerService = new CustomerLoginServiceImpl();
 		Filter_Data_Service filterService = new FilterData_Service_Impl();
+		GetMinOfXService getMinService = new Get_MinService_Impl();
 		
 		StateModel statemodel = new StateModel();
 		DistrictModel distmodel = new DistrictModel();
@@ -42,12 +48,12 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		
 		
 		do {
-			System.out.println("🙏🙏🙏🙏 Welcome to the Crop Yield Prediction App 🙏🙏🙏🙏 ");
+			System.out.println("ðŸ™�ðŸ™�ðŸ™�ðŸ™� Welcome to the Crop Yield Prediction App ðŸ™�ðŸ™�ðŸ™�ðŸ™� ");
 			System.out.println("**********************************************");
-			System.out.println(" ⇒⇒⇒⇒⇒⇒ LOGIN for ");
-			System.out.println(" ⇒⇒⇒⇒⇒⇒ 1 : ADMIN : ⇐⇐⇐⇐⇐⇐ ");
-			System.out.println(" ⇒⇒⇒⇒⇒⇒ 2 : CUSTOMER : ⇐⇐⇐⇐⇐⇐");
-			System.out.println(" ⇒⇒⇒⇒⇒⇒ 3 : System Exit : ⇐⇐⇐⇐⇐⇐ ");
+			System.out.println("======> LOGIN for  <=====");
+			System.out.println(" ============ 1 : ADMIN : ==================== ");
+			System.out.println("  ============ 2 : Customer : ==================== �");
+			System.out.println("  ============ 3 : System Exit : ====================  ");
 			System.out.println("**********************************************");
 
 			System.out.println("Enter Your Choice :");
@@ -85,7 +91,9 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					System.out.println("11 : To Add Bulk Crop Dataset ");
 					System.out.println("12 : To Add Bulk OldData Set ");
 					System.out.println("13 : Display all Old Data  of Three Years :");
-					System.out.println("14 : Filter data ");
+					System.out.println("14 : Get MIN(Temp) using crop Name");
+					System.out.println("15 : Filter data ");
+					
 					
 					System.out.println(" 15 :");
 					
@@ -258,8 +266,15 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 						break;
 						
 						
+					case 14 :
 						
-					case 14:
+						System.out.println("Enter the Crop Name to see the Min of X of Temperature :");
+						String name = sc.nextLine();
+						float minofTemp=	getMinService.getMinOfTemp(name);
+						System.out.println("The min of Temp is :"+minofTemp);
+						break;
+						
+					case 15:
 						
 						
 						System.out.println("1 : Filter Using CROP Name  :");
