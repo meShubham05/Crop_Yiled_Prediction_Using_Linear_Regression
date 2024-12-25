@@ -58,7 +58,6 @@ public class StateRepositoryImp  extends DBState implements StateRepository{
 
 	
 	
-	@Override
 	public List<StateModel> allState() 
 	{
 		 List<StateModel> allState = new ArrayList<StateModel>();
@@ -87,7 +86,6 @@ public class StateRepositoryImp  extends DBState implements StateRepository{
 
 
 
-	@Override
 	public boolean isDistrictUnderState(String stateName, String distName) {
 
 		try

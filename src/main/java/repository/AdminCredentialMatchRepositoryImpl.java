@@ -2,7 +2,6 @@ package repository;
 
 public class AdminCredentialMatchRepositoryImpl  extends DBState  implements AdminCredentialRepository{
 
-	@Override
 	public boolean isAdminMatch(String user,String pass) {
 	
 		try

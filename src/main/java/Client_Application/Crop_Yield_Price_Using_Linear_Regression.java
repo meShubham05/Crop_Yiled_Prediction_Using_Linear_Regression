@@ -2,6 +2,7 @@ package Client_Application;
 
 import model.*;
 
+
 import services.*;
 import java.util.*;
 
@@ -10,12 +11,24 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 
+import Linear_Regression_Services.Deviation_Of_X_Service;
+import Linear_Regression_Services.Deviation_Of_X_Service_Impl;
+import Linear_Regression_Services.Deviation_Of_Y_Service;
+import Linear_Regression_Services.Deviation_Of_Y_Service_Impl;
 import Linear_Regression_Services.GetMinOfXService;
+import Linear_Regression_Services.Get_MinOf_Service_Impl;
 import Linear_Regression_Services.Get_MinService_Impl;
+import Linear_Regression_Services.Get_Min_of_Y_Service;
+import Linear_Regression_Services.Product_Of_Dev_of_X_Y_Service;
+import Linear_Regression_Services.Product_Of_Dev_of_X_Y_Service_Impl;
+import Linear_Regression_Services.Sum_Of_Prod_Dev_X_Y_Service;
+import Linear_Regression_Services.Sum_Of_Prod_Dev_X_Y_Service_Impl;
+import Linear_Regression_Services.Sum_of_Square_of_Dev_X_Service;
+import Linear_Regression_Services.Sum_of_Square_of_Dev_X_Service_Impl;
 
 
 public class Crop_Yield_Price_Using_Linear_Regression {
-	public static void main(String[] args) 
+	public static void main(String[] args)   //main Function
 	{
 		
 		Logger log = Logger.getLogger(Crop_Yield_Price_Using_Linear_Regression.class);
@@ -33,6 +46,13 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		CustomerLoginService customerService = new CustomerLoginServiceImpl();
 		Filter_Data_Service filterService = new FilterData_Service_Impl();
 		GetMinOfXService getMinService = new Get_MinService_Impl();
+		Get_Min_of_Y_Service getMin_Of_Y_Service = new Get_MinOf_Service_Impl();
+		Deviation_Of_X_Service deviationService = new Deviation_Of_X_Service_Impl();
+		Deviation_Of_Y_Service deviationOfYService = new Deviation_Of_Y_Service_Impl();
+		Product_Of_Dev_of_X_Y_Service prodev_X_Y = new Product_Of_Dev_of_X_Y_Service_Impl();
+		Sum_Of_Prod_Dev_X_Y_Service sum_of_Dev_X_Y = new Sum_Of_Prod_Dev_X_Y_Service_Impl(); 
+		Sum_of_Square_of_Dev_X_Service sum_of_square_X = new Sum_of_Square_of_Dev_X_Service_Impl();
+		// below are the model classes 
 		
 		StateModel statemodel = new StateModel();
 		DistrictModel distmodel = new DistrictModel();
@@ -92,10 +112,14 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					System.out.println("12 : To Add Bulk OldData Set ");
 					System.out.println("13 : Display all Old Data  of Three Years :");
 					System.out.println("14 : Get MIN(Temp) using crop Name");
-					System.out.println("15 : Filter data ");
+					System.out.println("15 : Get MIN_Of_Y(Yield)  using crop Name ");
+					System.out.println("16 : Get deviation of X using crop Name :");
+					System.out.println("17 : Get Deviation of Y (yield ) using crop Name :");
+					System.out.println("18 : The Product of Deviation of X & Y :");
+					System.out.println("19 : The Sum of Product of Deviation of X and Y :");
+					System.out.println("20 : The Sum of Square of Deviation of X ");
+					System.out.println("21 : Filter data ");					
 					
-					
-					System.out.println(" 15 :");
 					
 						// shubhamgborkar99@gmail.com
 					
@@ -141,13 +165,9 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					case 4:
 
 						distService.districtList();
-
-						break;  
-						
-						
+						break;					
 
 					case 5:
-
 						boolean isCityAdded = cityService.isCityAdded(citymodel);
 						if (isCityAdded) {
 							System.out.println("\n====================================================\n");
@@ -263,18 +283,95 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					case 13:
 
 						olddataService.olddataset();
-						break;
-						
+						break;					
 						
 					case 14 :
 						
 						System.out.println("Enter the Crop Name to see the Min of X of Temperature :");
 						String name = sc.nextLine();
-						float minofTemp=	getMinService.getMinOfTemp(name);
-						System.out.println("The min of Temp is :"+minofTemp);
+						float minOfX_Temp = getMinService.getMinOfTemp(name);
+						
+						System.out.println("==============================================================");
+						System.out.println(" The Min of X ie (Temp)  is :"+minOfX_Temp);
+						System.out.println("==============================================================");
+						
 						break;
 						
+						
 					case 15:
+								System.out.println("Enter the  Crop Name to calculate the Min Of Y (Yield) :");
+								String cropname = sc.nextLine();
+								float min_of_Y_Yield = getMin_Of_Y_Service.getMinOfYeild(cropname); 
+								System.out.println("\n==============================================================\n");								
+								System.out.println("The Min of Y yield is :"+min_of_Y_Yield);
+								System.out.println("\n==============================================================\n");								
+					case 16 :
+						System.out.println("Enter the Crop Name to see the Deviation of X(Temperature) using CropName:");
+						cropname = sc.nextLine();
+						List<Float> deviationList = deviationService.getDeviationOfTemp(cropname);
+
+						System.out.println("\n==============================================================\n");						System.out.println("The Deviation of X (Temp) is:");
+						deviationList.forEach(deviation -> System.out.println(deviation));
+						System.out.println("\n==============================================================\n");						
+						break;
+						
+						
+					case 17:
+						System.out.println("Enter the Crop Name to see the Deviations of Y (Yield) using Crop Name:");
+						cropname = sc.nextLine();
+
+						
+						List<Float> deviationOfYList = deviationOfYService.deviation_Of_Y(cropname);
+
+						// Print the deviations
+						System.out.println("The Deviations of Y (Yield) are:");
+						System.out.println("\n==============================================================\n");
+						deviationOfYList.forEach(System.out::println);
+						System.out.println("\n==============================================================\n");						
+						break;
+
+					
+						
+					case 18:
+
+					    System.out.println("Enter the Crop Name:");
+					    cropname = sc.nextLine();
+
+					   
+					    List<Float> prodOfDevXAndYList = prodev_X_Y.product_of_Dev_X_and_Y(cropname);
+
+					  
+					    System.out.println("The Products of Deviations of X and Y are:");
+					    
+						System.out.println("\n==============================================================\n");
+					    prodOfDevXAndYList.forEach(System.out::println);
+						System.out.println("\n==============================================================\n");
+					    
+					    break;
+
+						
+						
+					case 19 :
+						
+						System.out.println("Enter the  Crop Name to calculate the Min Of Y (Yield) :");
+						 cropname = sc.nextLine();
+						
+						float result2 = sum_of_Dev_X_Y.getSum_OfDeviation_X_Y(cropname);
+						
+						System.out.println("The Sum of Product of  Deviation of X and Y is :"+result2);
+						
+						break;
+						
+					    
+					case 20:
+						
+						System.out.println("Enter the  Crop Name to calculate the Min Of Y (Yield) :");
+						 cropname = sc.nextLine();
+					result2 = sum_of_square_X.sumOfProductOfDeviationOf_X(cropname);
+						
+					System.out.println("The Sum of Square of Deviation of X is : "+result2);
+						
+					case 21:
 						
 						
 						System.out.println("1 : Filter Using CROP Name  :");
@@ -298,8 +395,10 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 								
 								if(cropList!=null)
 								{
+									System.out.println("\n==============================================================\n");
 									cropList.forEach((cName)->System.out.println("CropName :"+cName.getCropname()+"Crop Id :"+cName.getCropid()+"Crop Fertilizer :"+cName.getFertilizer()));
 									cropList.clear();
+									System.out.println("\n==============================================================\n");
 								}
 								
 								break;
@@ -314,7 +413,9 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 								
 								if(filterCropBySeason!=null)
 								{
-									filterCropBySeason.forEach((season)->System.out.println("Crop Id :"+season.getCropid()+"  Crop Name :"+season.getCropname()+"  Crop State "+season.getDistId()  ));
+									System.out.println("\n==============================================================\n");
+									filterCropBySeason.forEach((season)->System.out.println("Crop Id :"+season.getCropid()+"  Crop Name :"+season.getCropname()+"  Crop State "+season.getDistId()));
+									System.out.println("\n==============================================================\n");
 								}
 							}
 						}while(filterChoice!=0);
@@ -396,7 +497,9 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 						log.info("Customer Registration is Successful :");
 						System.out.println("\n====================================================\n");
 
-					} else {
+					}
+					else 
+					{
 						System.out.println("\n====================================================\n");
 
 						log.info("Opps !! Some problem Occurs :");
@@ -404,8 +507,8 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 						System.out.println("\n====================================================\n");
 		 			}
 					 break;
-				}
-			}
-		} while (choice != 0);
+			    }
+		    }
+		} while(choice != 0);
 	}
 }

@@ -26,7 +26,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService{
 	}
 
 
-	@Override
+	
 	public boolean isAddedCustomerLogin() {
 		// TODO Auto-generated method stub
 		return custologinRepo.isAddedCustomerLogin();

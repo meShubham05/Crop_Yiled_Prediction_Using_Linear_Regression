@@ -17,7 +17,6 @@ import java.io.FileInputStream;
 import java.io.*;
 public class CropRepositoryImpl  extends DBState implements CropRepository {
 
-	@Override
 	public boolean isCropAdded(CropModel cropmodel) {
 
 			Scanner sc = new Scanner(System.in);
