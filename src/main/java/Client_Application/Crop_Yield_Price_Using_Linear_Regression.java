@@ -15,7 +15,7 @@ import Linear_Regression_Services.Get_MinService_Impl;
 
 
 public class Crop_Yield_Price_Using_Linear_Regression {
-	public static void main(String[] args) 
+	public static void main(String[] args)   //main Function
 	{
 		
 		Logger log = Logger.getLogger(Crop_Yield_Price_Using_Linear_Regression.class);
