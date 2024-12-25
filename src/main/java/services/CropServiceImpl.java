@@ -18,7 +18,7 @@ public class CropServiceImpl implements CropService{
 	}
 
 
-	@Override
+	
 	public List<CropModel> allCropList() {
 		// TODO Auto-generated method stub
 		return cropRepo.allCropList();

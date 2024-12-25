@@ -8,7 +8,7 @@ public class Filter_Data_Repository_Impl  extends DBState implements Filter_Data
 
 	List <CropModel> allCropList = new ArrayList<CropModel>();
 	List <CropModel> allSeaonWiseCrop = new ArrayList<CropModel>();
-	@Override
+	
 	public List <CropModel>  filterbyCropName(String CropName) 
 	{
 	
@@ -34,7 +34,7 @@ public class Filter_Data_Repository_Impl  extends DBState implements Filter_Data
 		}
 		
 	}
-	@Override
+
 	public List<CropModel> filterCropBySeason(String seasonName) {
 
 		try
