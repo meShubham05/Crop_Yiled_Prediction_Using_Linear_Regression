@@ -7,7 +7,7 @@ public class DistrictRepositoryImp extends DBState implements DistrictRepository
 
 	Scanner sc = new Scanner(System.in);
 	
-	@Override
+	
 	public boolean isDistrictAdd(DistrictModel distmodel) {
 		
 		try
@@ -37,7 +37,7 @@ public class DistrictRepositoryImp extends DBState implements DistrictRepository
 		return false;
 	}
 
-	@Override
+	
 	public List<DistrictModel> districtList() {
 		
 		try
@@ -63,7 +63,7 @@ public class DistrictRepositoryImp extends DBState implements DistrictRepository
 		return null;
 	}
 
-	@Override
+	
 	public boolean isCityAddedUnderDistrict(String distName, String cityName) {
 		
 		try

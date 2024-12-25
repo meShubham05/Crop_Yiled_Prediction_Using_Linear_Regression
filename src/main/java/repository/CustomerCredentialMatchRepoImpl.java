@@ -2,7 +2,6 @@ package repository;
 
 public class CustomerCredentialMatchRepoImpl  extends DBState implements CustomerCredentialRepository {
 
-	@Override
 	public boolean isCustomerMatch(String custEmail ,String pass) {
 		try
 		{

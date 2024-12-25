@@ -8,7 +8,6 @@ import model.CustomerLoginModel;
 public class CustomerLoginRepoImpl  extends DBState implements CustomerLoginRepo{
 
 		Scanner sc = new Scanner(System.in);
-	@Override
 	public List<CustomerLoginModel> allLoginCustomer( String email) {
 		
 		try
@@ -44,7 +43,6 @@ public class CustomerLoginRepoImpl  extends DBState implements CustomerLoginRepo
 		
 	}
 
-	@Override
 	public boolean isAddedCustomerLogin() {
 
 		/*
