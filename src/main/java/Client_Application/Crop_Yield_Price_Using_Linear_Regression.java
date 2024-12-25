@@ -21,10 +21,13 @@ import Linear_Regression_Services.Get_MinService_Impl;
 import Linear_Regression_Services.Get_Min_of_Y_Service;
 import Linear_Regression_Services.Product_Of_Dev_of_X_Y_Service;
 import Linear_Regression_Services.Product_Of_Dev_of_X_Y_Service_Impl;
+<<<<<<< HEAD
 import Linear_Regression_Services.Sum_Of_Prod_Dev_X_Y_Service;
 import Linear_Regression_Services.Sum_Of_Prod_Dev_X_Y_Service_Impl;
 import Linear_Regression_Services.Sum_of_Square_of_Dev_X_Service;
 import Linear_Regression_Services.Sum_of_Square_of_Dev_X_Service_Impl;
+=======
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 
 
 public class Crop_Yield_Price_Using_Linear_Regression {
@@ -50,8 +53,13 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 		Deviation_Of_X_Service deviationService = new Deviation_Of_X_Service_Impl();
 		Deviation_Of_Y_Service deviationOfYService = new Deviation_Of_Y_Service_Impl();
 		Product_Of_Dev_of_X_Y_Service prodev_X_Y = new Product_Of_Dev_of_X_Y_Service_Impl();
+<<<<<<< HEAD
 		Sum_Of_Prod_Dev_X_Y_Service sum_of_Dev_X_Y = new Sum_Of_Prod_Dev_X_Y_Service_Impl(); 
 		Sum_of_Square_of_Dev_X_Service sum_of_square_X = new Sum_of_Square_of_Dev_X_Service_Impl();
+=======
+		
+		
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 		// below are the model classes 
 		
 		StateModel statemodel = new StateModel();
@@ -116,11 +124,19 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					System.out.println("16 : Get deviation of X using crop Name :");
 					System.out.println("17 : Get Deviation of Y (yield ) using crop Name :");
 					System.out.println("18 : The Product of Deviation of X & Y :");
+<<<<<<< HEAD
 					System.out.println("19 : The Sum of Product of Deviation of X and Y :");
 					System.out.println("20 : The Sum of Square of Deviation of X ");
 					System.out.println("21 : Filter data ");					
+=======
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 					
+					System.out.println("19 : Filter data ");					
 					
+<<<<<<< HEAD
+=======
+					
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 						// shubhamgborkar99@gmail.com
 					
 				
@@ -291,9 +307,13 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 						String name = sc.nextLine();
 						float minOfX_Temp = getMinService.getMinOfTemp(name);
 						
+<<<<<<< HEAD
 						System.out.println("==============================================================");
 						System.out.println(" The Min of X ie (Temp)  is :"+minOfX_Temp);
 						System.out.println("==============================================================");
+=======
+						System.out.println(" The Min of X ie (Temp)  is :"+minOfX_Temp);
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 						
 						break;
 						
@@ -301,6 +321,7 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					case 15:
 								System.out.println("Enter the  Crop Name to calculate the Min Of Y (Yield) :");
 								String cropname = sc.nextLine();
+<<<<<<< HEAD
 								float min_of_Y_Yield = getMin_Of_Y_Service.getMinOfYeild(cropname); 
 								System.out.println("\n==============================================================\n");								
 								System.out.println("The Min of Y yield is :"+min_of_Y_Yield);
@@ -372,6 +393,48 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 					System.out.println("The Sum of Square of Deviation of X is : "+result2);
 						
 					case 21:
+=======
+								float min_of_Y_Yield = getMin_Of_Y_Service.getMinOfYeild(cropname);  
+								System.out.println("The Min of Y yield is :"+min_of_Y_Yield);
+							
+								
+					case 16 :
+						System.out.println("Enter the Crop Name to see the Deviation of X(Temperature) using CropName :");
+						 cropname = sc.nextLine();
+						float Deviation_Of_X_Temp = deviationService.getDeviationofTemp(cropname);
+						
+						System.out.println(" The Deviation of X (Temp) is :"+Deviation_Of_X_Temp);
+						
+						break;
+						
+						
+					case 17:
+						
+						System.out.println("Enter the Crop Name to see the Deviation of Y(Yield) using CropName :");
+						 cropname = sc.nextLine();
+						float Deviation_Of_Y_yield= deviationOfYService.deviation_Of_Y(cropname);
+						
+						System.out.println(" The Deviation of Y (Yield) is :"+Deviation_Of_Y_yield);
+						
+						
+						break;
+					
+						
+					case  18 :
+						
+						System.out.println("Enter the Crop Name :");
+						 cropname = sc.nextLine();
+						 
+						 float prodOf_Dev_X_Y  = prodev_X_Y.product_of_Dev_X_and_Y(cropname);
+						 
+						 System.out.println("The Product of Deviation of X and Y is : "+prodOf_Dev_X_Y);
+						 
+						break;
+						
+						
+						
+					case 19:
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 						
 						
 						System.out.println("1 : Filter Using CROP Name  :");
@@ -413,9 +476,14 @@ public class Crop_Yield_Price_Using_Linear_Regression {
 								
 								if(filterCropBySeason!=null)
 								{
+<<<<<<< HEAD
 									System.out.println("\n==============================================================\n");
 									filterCropBySeason.forEach((season)->System.out.println("Crop Id :"+season.getCropid()+"  Crop Name :"+season.getCropname()+"  Crop State "+season.getDistId()));
 									System.out.println("\n==============================================================\n");
+=======
+									
+									filterCropBySeason.forEach((season)->System.out.println("Crop Id :"+season.getCropid()+"  Crop Name :"+season.getCropname()+"  Crop State "+season.getDistId()));
+>>>>>>> branch 'main' of https://github.com/meShubham05/Crop_Yiled_Prediction_Using_Linear_Regression.git
 								}
 							}
 						}while(filterChoice!=0);
